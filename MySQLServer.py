@@ -7,14 +7,14 @@ try:
     connection = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="@1992myown"  # <-- Replace with your actual password
+        password="@1992myown"  # Replace with your password
     )
 
     if connection.is_connected():
         cursor = connection.cursor()
         try:
-            # Attempt to create database
-            cursor.execute("CREATE DATABASE IF NOT EXISTS ALX_BOOK_STORE")
+            # Attempt to create database with exact lowercase name
+            cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
             print("Database 'alx_book_store' created successfully!")
         except Error as e:
             print(f"Error creating database: {e}")
