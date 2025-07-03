@@ -1,45 +1,46 @@
--- Create the database
-CREATE DATABASE IF NOT EXISTS alx_book_store;
+-- task_2.sql
+
+-- Select the database to use
 USE alx_book_store;
 
--- Create authors table
-CREATE TABLE authors (
-    author_id INT AUTO_INCREMENT PRIMARY KEY,
-    author_name VARCHAR(215) NOT NULL
+-- Create the 'authors' table
+CREATE TABLE IF NOT EXISTS authors (
+    author_id INT PRIMARY KEY AUTO_INCREMENT,
+    author_name VARCHAR(255) NOT NULL
 );
 
--- Create books table
-CREATE TABLE books (
-    book_id INT AUTO_INCREMENT PRIMARY KEY,
+-- Create the 'books' table
+CREATE TABLE IF NOT EXISTS books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(130) NOT NULL,
     author_id INT,
-    price DOUBLE,
+    price DOUBLE NOT NULL,
     publication_date DATE,
     FOREIGN KEY (author_id) REFERENCES authors(author_id)
 );
 
--- Create customers table
-CREATE TABLE customers (
-    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+-- Create the 'customers' table
+CREATE TABLE IF NOT EXISTS customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_name VARCHAR(215) NOT NULL,
-    email VARCHAR(215) UNIQUE NOT NULL,
-    address TEXT
+    email_address VARCHAR(215) NOT NULL,
+    address VARCHAR(215) NOT NULL
 );
 
--- Create orders table
-CREATE TABLE orders (
-    order_id INT AUTO_INCREMENT PRIMARY KEY,
+-- Create the 'orders' table
+CREATE TABLE IF NOT EXISTS orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_id INT,
-    order_date DATE,
+    order_date DATE NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
 
--- Create order_details table
-CREATE TABLE order_details (
-    orderdetailid INT AUTO_INCREMENT PRIMARY KEY,
+-- Create the 'order_details' table
+CREATE TABLE IF NOT EXISTS order_details (
+    order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
     order_id INT,
     book_id INT,
-    quantity DOUBLE,
+    quantity DOUBLE NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (book_id) REFERENCES books(book_id)
 );
