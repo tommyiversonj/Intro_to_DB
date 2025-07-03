@@ -1,1 +1,7 @@
-mysql -u root -p alx_book_store < task_3.sql
+-- task_3.sql
+
+-- Select the database to use
+USE alx_book_store;
+
+-- List all tables in the current database
+SHOW TABLES;
