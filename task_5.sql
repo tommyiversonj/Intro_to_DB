@@ -9,3 +9,4 @@ INSERT INTO customer (
     'cbaidoo@sandtech.com',
     '123 Happiness Ave.'
 );
+
